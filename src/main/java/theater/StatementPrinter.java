@@ -7,6 +7,7 @@ import java.util.Map;
 /**
  * This class generates a statement for a given invoice of performances.
  */
+
 public class StatementPrinter {
     private Invoice invoice;
     private Map<String, Play> plays;
@@ -14,6 +15,29 @@ public class StatementPrinter {
     public StatementPrinter(Invoice invoice, Map<String, Play> plays) {
         this.invoice = invoice;
         this.plays = plays;
+    }
+
+    /**
+     * Returns the play associated with the given play ID.
+     *
+     * @param playID the unique identifier of the play
+     * @return the Play object corresponding to the ID
+     */
+
+    public Play getPlay(String playID) {
+        return plays.get(playID);
+    }
+
+    /**
+     * Computes the total amount owed for the given performance and play.
+     *
+     * @param performance the performance information (audience etc.)
+     * @param play the play to calculate the amount for
+     * @return the charge in cents
+     */
+
+    public int getAmount(Performance performance, Play play) {
+        return getThisAmount(performance, play);
     }
 
     /**
